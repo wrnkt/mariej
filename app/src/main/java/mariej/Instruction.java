@@ -1,13 +1,28 @@
 package mariej;
 
 import java.util.Arrays;
+import java.util.function.BiConsumer;
 
 public class Instruction
 {
     // First 4 bits are opcode
     // last 12 represent address
 
+    private String name;
     private byte bits[] = { 0x00, 0x00, 0x00, 0x00 };
+
+    public Instruction(String name, byte opCode)
+    {
+        this.name = name;
+        setOpCode(opCode);
+    }
+
+    public String getName() { return this.name; }
+    private void setName(String name)
+    {
+        this.name = name;
+    }
+
 
     public byte[] getBits() { return bits; }
     public void setBits(byte[] bits)
