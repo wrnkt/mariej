@@ -1,9 +1,16 @@
 package mariej;
 
+import java.util.BitSet;
+
 class MBR
 {
-    public static final byte[] opCode = { 0x00, 0x11 };
-    private byte bits[] = { 0x00, 0x00, 0x00, 0x00 };
+    private BitSet opCode = new BitSet(4);
+    private BitSet bits = new BitSet(16);
 
-    public MBR() {}
+    public MBR()
+    {
+        // opCode: 0011
+        opCode.set(0);
+        opCode.set(1);
+    }
 }

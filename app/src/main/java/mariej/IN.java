@@ -1,9 +1,16 @@
 package mariej;
 
-class IN
-{
-    public static final byte[] opCode = { 0x01, 0x01 };
-    private byte bits[] = { 0x00, 0x00, 0x00, 0x00 };
+import java.util.BitSet;
 
-    public IN() {}
+public class IN
+{
+    private BitSet opCode = new BitSet(4);
+    private BitSet bits = new BitSet(16);
+
+    public IN()
+    {
+        // opCode: 0101
+        opCode.set(0);
+        opCode.set(2);
+    }
 }

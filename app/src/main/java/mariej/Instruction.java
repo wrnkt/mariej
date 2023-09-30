@@ -1,20 +1,24 @@
 package mariej;
 
 import java.util.Arrays;
+import java.util.BitSet;
 import java.util.function.BiConsumer;
 
 public class Instruction
 {
+    private String name;
+
     // First 4 bits are opcode
     // last 12 represent address
+    private BitSet bits = new BitSet(16);
 
-    private String name;
-    private byte bits[] = { 0x00, 0x00, 0x00, 0x00 };
 
-    public Instruction(String name, byte opCode)
+    public Instruction(String name, byte[] opCode)
     {
         this.name = name;
         setOpCode(opCode);
+        System.out.println(this.name + "\n");
+        System.out.println(this.bits.toString() + "\n");
     }
 
     public String getName() { return this.name; }
@@ -24,30 +28,31 @@ public class Instruction
     }
 
 
-    public byte[] getBits() { return bits; }
-    public void setBits(byte[] bits)
+    public BitSet getBits() { return bits; }
+    public void setBits(BitSet bits)
     {
-        assert(bits.length == 16);
         this.bits = bits;
     }
 
-    public byte getOpCode()
+    public BitSet getOpCode()
     {
-        return bits[0];
+        return bits.get(0, 4);
     }
-    public void setOpCode(byte opCode)
+    public void setOpCode(byte[] opCode)
     {
-        this.bits[0] = opCode;
+        //this.bits[0] = opCode;
+        this.bits = BitSet.valueOf(opCode);
     }
 
     public byte[] getAddress()
     {
-        return Arrays.copyOfRange(this.bits, 1, 4);
+        //return Arrays.copyOfRange(this.bits, 1, 4);
+        return this.bits.get(4, 16).toByteArray();
     }
-    public void setAddress(byte[] address)
+    public void setAddress(BitSet address)
     {
-        for (int i = 1; i < 5; i++) {
-            this.bits[i] = address[i];
+        for (int i = 4; i < 16; i++) {
+            this.bits.set(i, address.get(i-4));
         }
     }
 

@@ -1,9 +1,17 @@
 package mariej;
 
+import java.util.BitSet;
+
 class IR
 {
-    public static final byte[] opCode = { 0x01, 0x11 };
-    private byte bits[] = { 0x00, 0x00, 0x00, 0x00 };
+    private BitSet opCode = new BitSet(4);
+    private BitSet bits = new BitSet(16);
 
-    public IR() {}
+    public IR()
+    {
+        // opCode: 0111
+        opCode.set(0);
+        opCode.set(1);
+        opCode.set(2);
+    }
 }

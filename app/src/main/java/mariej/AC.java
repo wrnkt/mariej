@@ -1,9 +1,15 @@
 package mariej;
 
-class AC
-{
-    public static final byte[] opCode = { 0x01, 0x00 };
-    private byte bits[] = { 0x00, 0x00, 0x00, 0x00 };
+import java.util.BitSet;
 
-    public AC() {}
+public class AC
+{
+    private BitSet opCode = new BitSet(4);
+    private BitSet bits = new BitSet(16);
+
+    public AC()
+    {
+        // opCode: 0100
+        opCode.set(2);
+    }
 }
