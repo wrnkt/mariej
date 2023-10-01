@@ -40,7 +40,6 @@ public class Instruction
     }
     public void setOpCode(byte[] opCode)
     {
-        //this.bits[0] = opCode;
         this.bits = BitSet.valueOf(opCode);
     }
 
